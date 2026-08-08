@@ -28,21 +28,37 @@ export default function MusicPlayer({ autoPlay = false }: Props) {
     audio.addEventListener("play", onPlay);
     audio.addEventListener("pause", onPause);
 
+    const tryPlay = () => {
+      if (!autoPlay) return;
+      void audio
+        .play()
+        .then(() => setNeedsTap(false))
+        .catch(() => setNeedsTap(true));
+    };
+
+    // Try as soon as possible, then again when buffered.
+    tryPlay();
+    audio.addEventListener("canplaythrough", tryPlay, { once: true });
+
+    // If the first tap/click anywhere unlocks audio policies, start then.
+    const unlockOnGesture = () => {
+      if (!audio.paused) return;
+      void audio.play().then(() => setNeedsTap(false)).catch(() => setNeedsTap(true));
+    };
+    window.addEventListener("pointerdown", unlockOnGesture, { once: true });
+    window.addEventListener("touchstart", unlockOnGesture, { once: true });
+    window.addEventListener("keydown", unlockOnGesture, { once: true });
+
     return () => {
       audio.pause();
       audio.removeEventListener("play", onPlay);
       audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("canplaythrough", tryPlay);
+      window.removeEventListener("pointerdown", unlockOnGesture);
+      window.removeEventListener("touchstart", unlockOnGesture);
+      window.removeEventListener("keydown", unlockOnGesture);
       audioRef.current = null;
     };
-  }, []);
-
-  useEffect(() => {
-    if (!autoPlay || !audioRef.current) return;
-    const audio = audioRef.current;
-    void audio
-      .play()
-      .then(() => setNeedsTap(false))
-      .catch(() => setNeedsTap(true));
   }, [autoPlay]);
 
   const toggle = async () => {
