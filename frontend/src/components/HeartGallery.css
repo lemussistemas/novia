@@ -3,7 +3,8 @@
   margin: 0 auto;
   display: grid;
   justify-items: center;
-  gap: 0.75rem;
+  gap: 1.1rem;
+  padding-bottom: 0.5rem;
 }
 
 .heart-hint {
@@ -16,11 +17,13 @@
 .heart-stage {
   position: relative;
   width: min(100vw - 1.5rem, 720px);
-  height: min(72vw, 520px);
+  height: min(78vw, 540px);
+  margin-bottom: 0.75rem;
   perspective: 1200px;
   cursor: grab;
   touch-action: none;
   user-select: none;
+  overflow: visible;
 }
 
 .heart-glow {
@@ -103,11 +106,16 @@
 
 .heart-caption,
 .heart-reset {
-  margin: 0;
+  position: relative;
+  z-index: 6;
+  margin: 1.35rem 0 0;
+  padding: 0 1rem;
   font-family: "Cormorant Garamond", Georgia, serif;
   font-style: italic;
   font-size: 1.25rem;
   color: var(--rose-deep);
+  text-align: center;
+  max-width: 90%;
 }
 
 .heart-reset {
@@ -120,8 +128,19 @@
 }
 
 @media (max-width: 640px) {
+  .heart-gallery {
+    gap: 1.35rem;
+  }
+
   .heart-stage {
-    height: min(88vw, 460px);
+    height: min(96vw, 520px);
+    margin-bottom: 1.5rem;
+  }
+
+  .heart-caption,
+  .heart-reset {
+    margin-top: 1.75rem;
+    font-size: 1.15rem;
   }
 
   .heart-photo {

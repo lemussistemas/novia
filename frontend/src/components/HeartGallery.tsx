@@ -73,7 +73,7 @@ export default function HeartGallery() {
     }, 1400);
   };
 
-  const scale = 9.6;
+  const scale = 8.6;
 
   return (
     <div className="heart-gallery">
@@ -89,7 +89,7 @@ export default function HeartGallery() {
         <div className="heart-glow" aria-hidden />
         <div
           className="heart-world"
-          style={{ transform: `rotateX(8deg) rotateY(${rotation}deg)` }}
+          style={{ transform: `translateY(-36px) rotateX(8deg) rotateY(${rotation}deg)` }}
         >
           {COUPLE_PHOTOS.map((photo, i) => {
             const p = points[i];
