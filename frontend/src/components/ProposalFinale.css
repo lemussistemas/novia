@@ -37,7 +37,8 @@
   border-radius: 999px;
   padding: 1rem 1.8rem;
   min-width: min(100%, 280px);
-  background: rgba(255, 255, 255, 0.72);
+  min-height: 52px;
+  background: #ffffff;
   color: var(--rose-deep);
   font-family: "Cormorant Garamond", Georgia, serif;
   font-size: clamp(1.35rem, 4vw, 1.8rem);

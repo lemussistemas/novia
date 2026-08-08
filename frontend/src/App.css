@@ -1,11 +1,14 @@
 .app-shell {
   position: relative;
   min-height: 100vh;
+  min-height: 100dvh;
   isolation: isolate;
+  background-color: transparent;
 }
 
 .app-loading {
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 .ambient {
@@ -14,7 +17,7 @@
   filter: blur(60px);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.55;
+  opacity: 0.4;
   animation: drift 14s ease-in-out infinite alternate;
 }
 
@@ -23,7 +26,7 @@
   height: min(48vw, 420px);
   top: -8%;
   left: -6%;
-  background: var(--blush);
+  background: #e8a0b0;
 }
 
 .ambient-b {
@@ -31,9 +34,9 @@
   height: min(42vw, 360px);
   right: -4%;
   bottom: 4%;
-  background: var(--gold);
+  background: #c4a06a;
   animation-delay: -4s;
-  opacity: 0.28;
+  opacity: 0.22;
 }
 
 @keyframes drift {
@@ -42,5 +45,16 @@
   }
   to {
     transform: translate3d(18px, 24px, 0) scale(1.08);
+  }
+}
+
+@media (max-width: 640px) {
+  .ambient {
+    filter: blur(40px);
+    opacity: 0.28;
+  }
+
+  .ambient-b {
+    opacity: 0.16;
   }
 }

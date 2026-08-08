@@ -1,4 +1,7 @@
 :root {
+  color-scheme: light only;
+  supported-color-schemes: light;
+
   --rose-deep: #5c1f2e;
   --rose: #9b3d55;
   --blush: #e8a0b0;
@@ -8,21 +11,30 @@
   --ink-soft: #6b4450;
   --gold: #c4a06a;
   --glow: rgba(155, 61, 85, 0.28);
+  --surface: #ffffff;
+  --surface-soft: #fff1f4;
 
   font-family: "Manrope", system-ui, sans-serif;
   color: var(--ink);
-  background: var(--cream);
+  background-color: var(--cream);
   line-height: 1.5;
   font-weight: 500;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+html {
+  color-scheme: light only;
+  background-color: #fff7f4;
 }
 
 html,
@@ -34,11 +46,28 @@ body,
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(ellipse 80% 55% at 15% 10%, rgba(232, 160, 176, 0.45), transparent 55%),
-    radial-gradient(ellipse 70% 50% at 90% 85%, rgba(196, 160, 106, 0.22), transparent 50%),
+  min-height: 100dvh;
+  color: var(--ink);
+  background-color: #fff7f4;
+  background-image:
+    radial-gradient(ellipse 80% 55% at 15% 10%, #f3c8d4 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 85%, #ead7b8 0%, transparent 50%),
     linear-gradient(165deg, #fff8f6 0%, #fde8ee 42%, #f6d4dc 100%);
+  background-attachment: scroll;
   overflow-x: hidden;
+  -webkit-tap-highlight-color: transparent;
+  forced-color-adjust: none;
+}
+
+/* Evita que Android/iOS “oscuro automático” invierta la página */
+@media (prefers-color-scheme: dark) {
+  :root,
+  html,
+  body {
+    color-scheme: light only;
+    background-color: #fff7f4;
+    color: #2a151b;
+  }
 }
 
 h1,
@@ -47,17 +76,24 @@ h2,
   font-family: "Cormorant Garamond", Georgia, serif;
   font-weight: 600;
   letter-spacing: 0.01em;
+  color: var(--rose-deep);
 }
 
 button,
 input {
   font: inherit;
+  color-scheme: light;
 }
 
 button {
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 a {
   color: inherit;
+}
+
+img {
+  max-width: 100%;
 }

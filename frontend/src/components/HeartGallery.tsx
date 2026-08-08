@@ -26,6 +26,8 @@ function heartPositions(count: number): Point[] {
 export default function HeartGallery() {
   const [selected, setSelected] = useState<number | null>(null);
   const [rotation, setRotation] = useState(-18);
+  const [scale, setScale] = useState(8.6);
+  const [lift, setLift] = useState(-36);
   const dragging = useRef(false);
   const moved = useRef(false);
   const lastX = useRef(0);
@@ -34,6 +36,17 @@ export default function HeartGallery() {
   const selectedRef = useRef<number | null>(null);
 
   const points = useMemo(() => heartPositions(COUPLE_PHOTOS.length), []);
+
+  useEffect(() => {
+    const syncLayout = () => {
+      const mobile = window.innerWidth <= 640;
+      setScale(mobile ? 6.4 : 8.6);
+      setLift(mobile ? -48 : -36);
+    };
+    syncLayout();
+    window.addEventListener("resize", syncLayout);
+    return () => window.removeEventListener("resize", syncLayout);
+  }, []);
 
   useEffect(() => {
     selectedRef.current = selected;
@@ -73,8 +86,6 @@ export default function HeartGallery() {
     }, 1400);
   };
 
-  const scale = 8.6;
-
   return (
     <div className="heart-gallery">
       <p className="heart-hint">Arrastra para girar · toca una foto para acercarla</p>
@@ -89,17 +100,19 @@ export default function HeartGallery() {
         <div className="heart-glow" aria-hidden />
         <div
           className="heart-world"
-          style={{ transform: `translateY(-36px) rotateX(8deg) rotateY(${rotation}deg)` }}
+          style={{
+            transform: `translateY(${lift}px) rotateX(8deg) rotateY(${rotation}deg)`,
+          }}
         >
           {COUPLE_PHOTOS.map((photo, i) => {
             const p = points[i];
             const isSelected = selected === photo.id;
             const baseX = p.x * scale;
             const baseY = -p.y * scale + 12;
-            const baseZ = p.z * 1.4;
+            const baseZ = p.z * 1.2;
 
             const transform = isSelected
-              ? `translate3d(0px, 12px, 260px) rotateY(${-rotation}deg) rotateX(-8deg) scale(1.6)`
+              ? `translate3d(0px, 8px, 180px) rotateY(${-rotation}deg) rotateX(-8deg) scale(1.45)`
               : `translate3d(${baseX}px, ${baseY}px, ${baseZ}px) rotateY(${-rotation}deg) rotateX(-8deg)`;
 
             return (
@@ -107,7 +120,10 @@ export default function HeartGallery() {
                 key={photo.id}
                 type="button"
                 className={`heart-photo ${isSelected ? "is-selected" : ""}`}
-                style={{ transform, zIndex: isSelected ? 20 : 1 + Math.round((baseZ + 40) / 4) }}
+                style={{
+                  transform,
+                  zIndex: isSelected ? 20 : 1 + Math.round((baseZ + 40) / 4),
+                }}
                 onClick={(e) => {
                   e.stopPropagation();
                   if (moved.current) return;

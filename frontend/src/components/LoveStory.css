@@ -65,6 +65,22 @@
   margin-bottom: min(8vh, 60px);
 }
 
+@media (max-width: 640px) {
+  .love-story {
+    gap: 3.4rem;
+    padding: 0 1rem 1.5rem;
+  }
+
+  .scroll-tease {
+    gap: min(36vh, 260px);
+    padding: 8vh 0 14vh;
+  }
+
+  .tease-line {
+    padding: 0 0.4rem;
+  }
+}
+
 .tease-line {
   margin: 0;
   opacity: 0;
