@@ -1,0 +1,105 @@
+.love-story {
+  width: min(100%, 640px);
+  margin: 3rem auto 0;
+  padding: 0 1rem 2rem;
+  display: grid;
+  gap: 4.5rem;
+}
+
+.story-lead {
+  margin: 0;
+  text-align: center;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.4rem, 4vw, 1.9rem);
+  color: var(--rose);
+  animation: float-hint 2.4s ease-in-out infinite;
+}
+
+.story-block {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+  text-align: center;
+}
+
+.story-block.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story-index {
+  margin: 0 0 0.4rem;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.story-block h2 {
+  margin: 0 0 0.7rem;
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  color: var(--rose-deep);
+  line-height: 1.1;
+}
+
+.story-block p:last-child {
+  margin: 0 auto;
+  max-width: 34ch;
+  color: var(--ink-soft);
+  font-size: clamp(1.02rem, 2.6vw, 1.15rem);
+  line-height: 1.65;
+}
+
+.scroll-tease {
+  display: grid;
+  gap: min(42vh, 320px);
+  padding: 10vh 0 18vh;
+  text-align: center;
+}
+
+.tease-line {
+  margin: 0;
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition:
+    opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.55rem, 5.5vw, 2.4rem);
+  line-height: 1.2;
+  color: var(--rose-deep);
+}
+
+.tease-line.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.tease-tone-0 {
+  color: var(--rose-deep);
+}
+
+.tease-tone-1 {
+  color: var(--rose);
+}
+
+.tease-tone-2 {
+  color: var(--ink-soft);
+  font-size: clamp(1.35rem, 4.8vw, 2rem);
+}
+
+@keyframes float-hint {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.75;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 1;
+  }
+}

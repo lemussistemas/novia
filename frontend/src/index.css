@@ -1,0 +1,63 @@
+:root {
+  --rose-deep: #5c1f2e;
+  --rose: #9b3d55;
+  --blush: #e8a0b0;
+  --petal: #f7d6de;
+  --cream: #fff7f4;
+  --ink: #2a151b;
+  --ink-soft: #6b4450;
+  --gold: #c4a06a;
+  --glow: rgba(155, 61, 85, 0.28);
+
+  font-family: "Manrope", system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.5;
+  font-weight: 500;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 55% at 15% 10%, rgba(232, 160, 176, 0.45), transparent 55%),
+    radial-gradient(ellipse 70% 50% at 90% 85%, rgba(196, 160, 106, 0.22), transparent 50%),
+    linear-gradient(165deg, #fff8f6 0%, #fde8ee 42%, #f6d4dc 100%);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+.display {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
