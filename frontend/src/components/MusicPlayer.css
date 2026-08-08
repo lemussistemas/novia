@@ -1,0 +1,60 @@
+.music-toggle {
+  position: fixed;
+  right: max(0.9rem, env(safe-area-inset-right));
+  bottom: max(1rem, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.72rem 0.95rem;
+  background: #ffffff;
+  color: var(--rose-deep);
+  box-shadow: 0 12px 28px rgba(42, 21, 27, 0.22);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-style: italic;
+}
+
+.music-toggle.is-playing {
+  background: linear-gradient(135deg, #5c1f2e, #9b3d55);
+  color: #fff8f6;
+}
+
+.music-icon {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.1rem;
+  font-style: normal;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.music-label {
+  line-height: 1;
+}
+
+.music-toggle.needs-tap {
+  animation: music-pulse 1.4s ease-in-out infinite;
+  background: #fff7f4;
+  box-shadow: 0 12px 28px rgba(92, 31, 46, 0.3);
+}
+
+@keyframes music-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@media (max-width: 640px) {
+  .music-toggle {
+    padding: 0.78rem 1rem;
+    min-height: 46px;
+  }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import GateForm from "./components/GateForm";
+import MusicPlayer from "./components/MusicPlayer";
 import Reveal from "./components/Reveal";
 import "./App.css";
 
@@ -8,15 +9,20 @@ const UNLOCK_KEY = "silvia-unlocked";
 export default function App() {
   const [unlocked, setUnlocked] = useState(false);
   const [ready, setReady] = useState(false);
+  const [musicOn, setMusicOn] = useState(false);
 
   useEffect(() => {
-    setUnlocked(sessionStorage.getItem(UNLOCK_KEY) === "1");
+    const wasUnlocked = sessionStorage.getItem(UNLOCK_KEY) === "1";
+    setUnlocked(wasUnlocked);
+    // If she refreshes after unlock, show player but wait for tap (mobile policy).
+    setMusicOn(false);
     setReady(true);
   }, []);
 
   const handleUnlock = () => {
     sessionStorage.setItem(UNLOCK_KEY, "1");
     setUnlocked(true);
+    setMusicOn(true);
   };
 
   if (!ready) {
@@ -28,6 +34,7 @@ export default function App() {
       <div className="ambient ambient-a" aria-hidden />
       <div className="ambient ambient-b" aria-hidden />
       {unlocked ? <Reveal /> : <GateForm onUnlock={handleUnlock} />}
+      {unlocked ? <MusicPlayer autoPlay={musicOn} /> : null}
     </div>
   );
 }
