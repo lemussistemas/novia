@@ -12,8 +12,7 @@ Sitio romántico con puerta de entrada secreta, corazón animado y carrusel de f
 | Campo | Valor por defecto |
 | --- | --- |
 | Primer nombre | `Silvia` |
-| Contraseña | `bailando` |
-| Actividad | `bailar` (cámbiala con `GATE_ACTIVITY`) |
+| Ritmo / contraseña | `salsa` |
 
 ## Desarrollo local
 
@@ -46,8 +45,7 @@ Vite hace proxy de `/api` y `/media` hacia Django (`:8000`).
 
 ```text
 GATE_FIRST_NAME=Silvia
-GATE_PASSWORD=bailando
-GATE_ACTIVITY=bailar
+GATE_PASSWORD=salsa
 DJANGO_ALLOWED_HOSTS=localhost,127.0.0.1,46.225.56.35
 CORS_ALLOWED_ORIGINS=http://localhost:5173,http://46.225.56.35
 ```

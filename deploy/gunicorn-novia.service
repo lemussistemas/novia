@@ -9,8 +9,7 @@ WorkingDirectory=/var/www/novia/backend
 Environment="DJANGO_DEBUG=0"
 Environment="DJANGO_ALLOWED_HOSTS=46.225.56.35,localhost,127.0.0.1"
 Environment="GATE_FIRST_NAME=Silvia"
-Environment="GATE_PASSWORD=bailando"
-Environment="GATE_ACTIVITY=bailar"
+Environment="GATE_PASSWORD=salsa"
 Environment="CORS_ALLOWED_ORIGINS=http://46.225.56.35"
 ExecStart=/var/www/novia/backend/venv/bin/gunicorn \
           --access-logfile - \

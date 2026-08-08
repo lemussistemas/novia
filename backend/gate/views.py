@@ -15,19 +15,15 @@ class UnlockView(APIView):
     def post(self, request):
         first_name = _norm(request.data.get("first_name", ""))
         password = _norm(request.data.get("password", ""))
-        activity = _norm(request.data.get("activity", ""))
 
         expected_name = _norm(settings.GATE_FIRST_NAME)
         expected_password = _norm(settings.GATE_PASSWORD)
-        expected_activity = _norm(settings.GATE_ACTIVITY)
 
         errors = {}
         if first_name != expected_name:
             errors["first_name"] = "Ese no es el nombre correcto."
         if password != expected_password:
-            errors["password"] = "Contraseña incorrecta."
-        if activity != expected_activity:
-            errors["activity"] = "Esa no es la actividad con la que nos conocimos."
+            errors["password"] = "Esa no es la respuesta correcta."
 
         if errors:
             return Response(

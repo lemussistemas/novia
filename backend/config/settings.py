@@ -95,9 +95,7 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # Gate credentials (change activity answer via env)
 GATE_FIRST_NAME = os.environ.get("GATE_FIRST_NAME", "Silvia")
-GATE_PASSWORD = os.environ.get("GATE_PASSWORD", "bailando")
-# TODO: replace with the real activity answer when you confirm it
-GATE_ACTIVITY = os.environ.get("GATE_ACTIVITY", "bailar")
+GATE_PASSWORD = os.environ.get("GATE_PASSWORD", "salsa")
 
 CORS_ALLOWED_ORIGINS = [
     o.strip()

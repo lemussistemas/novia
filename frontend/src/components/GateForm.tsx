@@ -9,7 +9,6 @@ type Props = {
 type FormState = {
   first_name: string;
   password: string;
-  activity: string;
 };
 
 const API_BASE = import.meta.env.VITE_API_BASE ?? "";
@@ -18,7 +17,6 @@ export default function GateForm({ onUnlock }: Props) {
   const [form, setForm] = useState<FormState>({
     first_name: "",
     password: "",
-    activity: "",
   });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -59,7 +57,7 @@ export default function GateForm({ onUnlock }: Props) {
         <p className="gate-brand">Para ti</p>
         <h1 className="gate-title">Abre esto con el corazón</h1>
         <p className="gate-subtitle">
-          Tres respuestas. Una sola persona las conoce.
+          Dos respuestas. Una sola persona las conoce.
         </p>
 
         <form className="gate-form" onSubmit={onSubmit} noValidate>
@@ -77,7 +75,7 @@ export default function GateForm({ onUnlock }: Props) {
           </label>
 
           <label className="field">
-            <span>Ingresa la contraseña</span>
+            <span>Bailando, ¿qué ritmo nos conocimos?</span>
             <input
               type="password"
               name="password"
@@ -85,18 +83,6 @@ export default function GateForm({ onUnlock }: Props) {
               value={form.password}
               onChange={(e) => update("password", e.target.value)}
               placeholder="••••••••"
-              required
-            />
-          </label>
-
-          <label className="field">
-            <span>¿Haciendo qué actividad nos conocimos?</span>
-            <input
-              type="text"
-              name="activity"
-              value={form.activity}
-              onChange={(e) => update("activity", e.target.value)}
-              placeholder="Esa actividad especial…"
               required
             />
           </label>
