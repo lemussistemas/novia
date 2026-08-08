@@ -60,6 +60,11 @@
   text-align: center;
 }
 
+.scroll-tease .digital-roses {
+  margin-top: min(8vh, 60px);
+  margin-bottom: min(8vh, 60px);
+}
+
 .tease-line {
   margin: 0;
   opacity: 0;

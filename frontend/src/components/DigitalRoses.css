@@ -1,0 +1,123 @@
+.digital-roses {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: 2rem 1rem 1rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(36px);
+  transition:
+    opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.digital-roses.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.roses-bouquet {
+  position: relative;
+  height: min(46vw, 280px);
+  max-width: 420px;
+  margin: 0 auto 1.1rem;
+}
+
+.rose-wrap {
+  position: absolute;
+  bottom: 0;
+  filter: drop-shadow(0 12px 18px rgba(106, 69, 143, 0.22));
+  opacity: 0;
+  --tilt: 0deg;
+  transform: translateY(24px) rotate(var(--tilt)) scale(0.86);
+}
+
+.digital-roses.is-visible .rose-wrap {
+  animation: rose-bloom 1.1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.rose-a {
+  left: 4%;
+  --tilt: -16deg;
+  animation-delay: 0.05s;
+}
+
+.rose-b {
+  left: 20%;
+  z-index: 2;
+  --tilt: -7deg;
+  animation-delay: 0.16s;
+}
+
+.rose-c {
+  left: 50%;
+  z-index: 3;
+  translate: -50% 0;
+  --tilt: 0deg;
+  animation-delay: 0.28s;
+}
+
+.rose-d {
+  right: 20%;
+  z-index: 2;
+  --tilt: 8deg;
+  animation-delay: 0.4s;
+}
+
+.rose-e {
+  right: 2%;
+  --tilt: 16deg;
+  animation-delay: 0.52s;
+}
+
+.lilac-rose {
+  display: block;
+  transform-origin: 50% 100%;
+}
+
+.digital-roses.is-visible .lilac-rose {
+  animation: rose-sway 3.6s ease-in-out infinite;
+}
+
+.roses-title {
+  margin: 0.2rem 0 0.45rem;
+  font-size: clamp(1.7rem, 5.5vw, 2.5rem);
+  color: #6d3f8f;
+  line-height: 1.1;
+}
+
+.roses-text {
+  margin: 0 auto;
+  max-width: 28ch;
+  color: var(--ink-soft);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-style: italic;
+  font-size: clamp(1.15rem, 3.5vw, 1.45rem);
+  line-height: 1.45;
+}
+
+@keyframes rose-bloom {
+  from {
+    opacity: 0;
+    transform: translateY(28px) rotate(var(--tilt)) scale(0.82);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--tilt)) scale(1);
+  }
+}
+
+@keyframes rose-sway {
+  0%,
+  100% {
+    transform: rotate(-2deg);
+  }
+  50% {
+    transform: rotate(2.5deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .roses-bouquet {
+    height: 230px;
+  }
+}

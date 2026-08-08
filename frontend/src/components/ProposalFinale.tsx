@@ -162,6 +162,7 @@ export default function ProposalFinale() {
           <p className="cele-line">Adiós soltería</p>
           <p className="cele-punch">Eres loba domesticada</p>
           <p className="cele-soft">Te elijo, Silvia.</p>
+          <p className="cele-secret">Abre la guantera del carro…</p>
         </div>
       )}
     </section>

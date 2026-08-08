@@ -286,6 +286,20 @@
   font-size: 1.2rem;
 }
 
+.cele-secret {
+  margin: 2rem auto 0;
+  max-width: 22ch;
+  padding: 0.95rem 1.2rem;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--rose-deep);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.35rem, 4.2vw, 1.85rem);
+  font-weight: 600;
+  line-height: 1.2;
+  animation: punch-pop 0.85s 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
 @keyframes press-pulse {
   0%,
   100% {

@@ -1,6 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 import { LOVE_MESSAGES, SCROLL_TEASES } from "../data/photos";
+import DigitalRoses from "./DigitalRoses";
 import "./LoveStory.css";
+
+const FLOWERS_AFTER = "No te detengas ahora";
 
 function useInView<T extends HTMLElement>(threshold = 0.35) {
   const ref = useRef<T | null>(null);
@@ -60,6 +63,11 @@ function TeaseLine({ text, index }: { text: string; index: number }) {
 }
 
 export default function LoveStory() {
+  const insertAt = SCROLL_TEASES.indexOf(FLOWERS_AFTER);
+  const before =
+    insertAt >= 0 ? SCROLL_TEASES.slice(0, insertAt + 1) : SCROLL_TEASES;
+  const after = insertAt >= 0 ? SCROLL_TEASES.slice(insertAt + 1) : [];
+
   return (
     <section className="love-story" aria-label="Mensajes para Silvia">
       <p className="story-lead">Baja despacio… esto es para ti</p>
@@ -68,8 +76,18 @@ export default function LoveStory() {
       ))}
 
       <div className="scroll-tease" aria-label="Sigue bajando">
-        {SCROLL_TEASES.map((line, i) => (
+        {before.map((line, i) => (
           <TeaseLine key={`${line}-${i}`} text={line} index={i} />
+        ))}
+
+        <DigitalRoses />
+
+        {after.map((line, i) => (
+          <TeaseLine
+            key={`${line}-after-${i}`}
+            text={line}
+            index={before.length + i}
+          />
         ))}
       </div>
     </section>
