@@ -24,7 +24,7 @@ export const LOVE_MESSAGES = [
   },
   {
     title: "Nuestras risas",
-    text: "Me encanta cómo convertimos lo simple en recuerdo. Un café, una caminata, una foto… y ya somos historia.",
+    text: "Me encanta cómo convertimos lo simple en recuerdo. Un café, solo estar abrazados, una foto… y ya somos historia.",
   },
   {
     title: "Tu forma de ser",
